@@ -1,0 +1,96 @@
+# ------------------------------------------------------
+# THIS FILE WAS AUTOMATICALLY GENERATED (DO NOT MODIFY)
+# ------------------------------------------------------
+
+type ProductEntity {
+  id: Int
+  name: String!
+  picture: String!
+  price: Int!
+  outlet_id: Int!
+  outlet: OutletEntity
+}
+
+type OutletEntity {
+  id: Int
+  name: String!
+  image: String!
+  address: String!
+  longitude: Float!
+  latitude: Float!
+  brand_id: Int!
+  brand: BrandEntity!
+  products: [ProductEntity!]
+}
+
+type BrandEntity {
+  id: Int
+  name: String!
+  logo: String!
+  banner: String!
+  outlets: [OutletEntity!]
+}
+
+type Query {
+  brands: [BrandEntity!]!
+  brand(id: Int!): BrandEntity!
+  outlets: [OutletEntity!]!
+  outlet(id: Int!): OutletEntity!
+  products: [ProductEntity!]!
+  product(id: Int!): ProductEntity!
+}
+
+type Mutation {
+  createBrand(data: CreateBrandDto!): BrandEntity!
+  updateBrand(data: UpdateBrandDto!, id: Int!): BrandEntity!
+  deleteBrand(id: Int!): BrandEntity!
+  createOutlet(data: CreateOutletDto!): OutletEntity!
+  updateOutlet(data: UpdateOutletDto!, id: Float!): OutletEntity!
+  deleteOutlet(id: Float!): OutletEntity!
+  createProduct(data: CreateProductDto!): ProductEntity!
+  updateProduct(data: UpdateProductDto!, id: Int!): ProductEntity!
+  deleteProduct(id: Float!): ProductEntity!
+}
+
+input CreateBrandDto {
+  name: String!
+  logo: String!
+  banner: String!
+}
+
+input UpdateBrandDto {
+  name: String
+  logo: String
+  banner: String
+}
+
+input CreateOutletDto {
+  name: String!
+  image: String!
+  address: String!
+  longitude: Float!
+  latitude: Float!
+  brand_id: Int!
+}
+
+input UpdateOutletDto {
+  name: String
+  picture: String
+  address: String
+  longitude: Float
+  latitude: Float
+  brand_id: Int
+}
+
+input CreateProductDto {
+  outlet_id: Int!
+  name: String!
+  picture: String!
+  price: Int!
+}
+
+input UpdateProductDto {
+  name: String
+  picture: String
+  price: Int
+}
